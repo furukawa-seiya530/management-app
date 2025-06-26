@@ -1,0 +1,112 @@
+body {
+    margin: 0;
+    font-family: 'Helvetica Neue', sans-serif;
+    background-color: #f3f2f4;
+}
+
+.header {
+    background: #000;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 30px;
+}
+
+.logo {
+    height: 30px;
+}
+
+.nav {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.nav a,
+.nav-link {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    font-family: inherit;
+    line-height: 1;
+}
+
+.main {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 30px;
+    display: flex;
+    align-items: center;
+}
+
+.title::before {
+    content: "▌";
+    color: #000;
+    margin-right: 10px;
+}
+
+.staff-table {
+    background: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.staff-table table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.staff-table th,
+.staff-table td {
+    padding: 16px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+    font-size: 14px;
+}
+
+.staff-table th {
+    background-color: #f9f9f9;
+    font-weight: bold;
+}
+
+.staff-table a {
+    color: #000;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+/* ▼ レスポンシブ：タブレット以下 */
+@media (max-width: 850px) {
+    .main {
+        padding: 0 10px;
+    }
+
+    .staff-table th,
+    .staff-table td {
+        font-size: 13px;
+        padding: 12px;
+    }
+
+    .title {
+        font-size: 20px;
+    }
+}
+
+/* ▼ レスポンシブ：PC (1400px〜1540px) */
+@media (min-width: 1400px) and (max-width: 1540px) {
+    .main {
+        padding: 0 40px;
+    }
+}

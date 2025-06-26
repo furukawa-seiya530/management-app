@@ -1,0 +1,165 @@
+body {
+    margin: 0;
+    font-family: 'Helvetica Neue', sans-serif;
+    background-color: #f3f2f4;
+}
+
+.header {
+    background: #000;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 30px;
+}
+
+.logo {
+    height: 30px;
+}
+
+.nav {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.nav a,
+.nav-link {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    font-family: inherit;
+    line-height: 1;
+}
+
+.logout-form button {
+    color: #fff;
+    background: none;
+    border: none;
+    font-weight: bold;
+    font-size: 1rem;
+    font-family: inherit;
+    cursor: pointer;
+    padding: 0;
+    line-height: 1;
+}
+
+.nav a:hover,
+.logout-form button:hover {
+    opacity: 0.8;
+}
+
+.main {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.title {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 30px;
+}
+
+.month-selector {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    margin-bottom: 20px;
+}
+
+.month-selector button {
+    background-color: #f5f5f5;
+    border: none;
+    padding: 6px 14px;
+    border-radius: 6px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.current-month {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.attendance-table {
+    background-color: white;
+    border-radius: 10px;
+    overflow-x: auto;
+}
+
+.attendance-table table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+}
+
+.attendance-table th,
+.attendance-table td {
+    padding: 12px 10px;
+    border-bottom: 1px solid #ddd;
+    text-align: center;
+}
+
+.attendance-table th {
+    background-color: #f5f5f5;
+    font-weight: bold;
+}
+
+.attendance-table a {
+    color: black;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.export-button {
+    text-align: right;
+    margin-top: 20px;
+}
+
+.csv-btn {
+    background-color: black;
+    color: white;
+    border: none;
+    padding: 10px 25px;
+    border-radius: 6px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.csv-btn:hover {
+    opacity: 0.9;
+}
+
+/* ▼ レスポンシブ対応（タブレット） */
+@media (max-width: 850px) {
+    .main {
+        padding: 0 10px;
+    }
+
+    .attendance-table table {
+        font-size: 13px;
+    }
+
+    .csv-btn {
+        width: 100%;
+    }
+
+    .month-selector {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+
+/* ▼ レスポンシブ対応（PC 1400px〜1540px） */
+@media (min-width: 1400px) and (max-width: 1540px) {
+    .main {
+        padding: 0 40px;
+    }
+}

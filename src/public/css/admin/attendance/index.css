@@ -1,0 +1,141 @@
+body {
+    margin: 0;
+    font-family: 'Helvetica Neue', sans-serif;
+    background-color: #f3f2f4;
+}
+
+.header {
+    background: #000;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 30px;
+}
+
+.logo {
+    height: 30px;
+}
+
+.nav {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.nav a,
+.nav-link {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    font-family: inherit;
+    line-height: 1;
+}
+
+.main {
+    padding: 40px 20px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.title {
+    font-size: 20px;
+    font-weight: bold;
+    border-left: 4px solid #000;
+    padding-left: 10px;
+    margin-bottom: 20px;
+}
+
+.date-selector {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #fff;
+    border-radius: 8px;
+    padding: 12px 20px;
+    margin-bottom: 20px;
+}
+
+.prev-btn,
+.next-btn {
+    background: none;
+    border: none;
+    font-weight: bold;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.attendance-table table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.attendance-table th,
+.attendance-table td {
+    padding: 14px;
+    text-align: center;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.attendance-table th {
+    background-color: #f9f9f9;
+    font-weight: bold;
+}
+
+.attendance-table a {
+    color: #000;
+    text-decoration: underline;
+}
+
+/* タブレット対応 */
+@media screen and (max-width: 850px) {
+    .main {
+        padding: 20px 10px;
+    }
+
+    .title {
+        font-size: 18px;
+    }
+
+    .date-selector {
+        flex-direction: row;
+        /* ← columnからrowに戻す */
+        flex-wrap: nowrap;
+        /* 折り返させない */
+        justify-content: space-between;
+        /* 両端配置 */
+        align-items: center;
+        gap: 10px;
+        /* 少し狭めに */
+        font-size: 13px;
+        /* フォント少し縮小 */
+    }
+
+    .date-selector a,
+    .date-selector .current-date {
+        white-space: nowrap;
+        /* テキスト折り返し防止 */
+        font-size: 13px;
+    }
+
+    .attendance-table table,
+    .attendance-table th,
+    .attendance-table td {
+        font-size: 14px;
+    }
+}
+
+/* PC（1400px〜1540px）対応 */
+@media (min-width: 1400px) and (max-width: 1540px) {
+    .main {
+        padding: 0 40px;
+    }
+}

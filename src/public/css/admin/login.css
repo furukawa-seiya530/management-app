@@ -1,0 +1,83 @@
+body {
+    margin: 0;
+    font-family: sans-serif;
+    background-color: #fff;
+    color: #000;
+}
+
+.header {
+    background-color: #000;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    padding-left: 30px;
+}
+
+.logo {
+    height: 30px;
+}
+
+.main {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 0 20px;
+}
+
+.title {
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 40px;
+}
+
+.admin-login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.admin-login-form label {
+    font-weight: bold;
+}
+
+.admin-login-form input {
+    height: 40px;
+    border: 1px solid #000;
+    padding: 0 10px;
+    font-size: 16px;
+}
+
+.admin-login-form button {
+    background-color: #000;
+    color: #fff;
+    height: 45px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.error-message {
+    color: red;
+    font-size: 14px;
+    margin-bottom: 4px;
+    margin-top: 4px;
+}
+
+/* レスポンシブ */
+@media (min-width: 1400px) and (max-width: 1540px) {
+    .main {
+        max-width: 600px;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 850px) {
+    .main {
+        padding: 0 30px;
+    }
+
+    .admin-login-form input,
+    .admin-login-form button {
+        font-size: 15px;
+    }
+}

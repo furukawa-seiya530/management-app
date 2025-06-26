@@ -1,0 +1,210 @@
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #f2f1f4;
+    color: #333;
+    font-size: 16px;
+}
+
+.header {
+    background-color: #000;
+    padding: 12px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    height: 30px;
+}
+
+.nav {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+.nav a,
+.nav-link {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.logout-form {
+    display: inline;
+}
+
+.main {
+    max-width: 900px;
+    margin: 70px auto;
+    padding: 0 30px;
+}
+
+.title {
+    font-size: 1.6rem;
+    font-weight: bold;
+    margin-bottom: 30px;
+    text-align: left;
+}
+
+.card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 0;
+    overflow: hidden;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.card table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.card th,
+.card td {
+    padding: 22px 16px;
+    border-bottom: 1px solid #eee;
+    text-align: center;
+    font-size: 1.1rem;
+}
+
+.card th {
+    background-color: #f9f9f9;
+    font-weight: bold;
+    width: 25%;
+}
+
+.card input[type="time"],
+.card textarea {
+    padding: 10px;
+    font-size: 1rem;
+    width: 80%;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    text-align: center;
+}
+
+.card textarea {
+    width: 95%;
+    resize: none;
+    font-weight: bold;
+    padding: 14px;
+    font-size: 1.05rem;
+}
+
+.button-container {
+    display: flex;
+    justify-content: flex-end;
+    padding: 24px;
+    background-color: #fff;
+    border-top: 1px solid #eee;
+    border-radius: 0 0 12px 12px;
+}
+
+.submit-btn {
+    background-color: #000;
+    color: #fff;
+    padding: 14px 36px;
+    border: none;
+    font-size: 1.1rem;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.submit-btn:hover {
+    opacity: 0.9;
+}
+
+.notice {
+    display: block;
+    width: 100%;
+    text-align: right;
+    padding-right: 30px;
+    color: #f66;
+    font-size: 1rem;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+.flash-message {
+    text-align: right;
+    color: #f66;
+    font-size: 1rem;
+    font-weight: bold;
+    margin-top: 20px;
+    margin-right: 20px;
+}
+
+.error {
+    color: red;
+    font-size: 0.9rem;
+    margin: 4px 0;
+}
+
+.tilde {
+    text-align: center;
+    width: 30px;
+    font-weight: bold;
+}
+
+.date-year {
+    margin-right: 300px;
+    display: inline-block;
+}
+
+.left-label {
+    text-align: left;
+    padding-left: 16px;
+}
+
+.card td.left-align {
+    text-align: left !important;
+    padding-left: 100px !important;
+}
+
+/* レスポンシブ対応（スマホ・タブレット） */
+@media (max-width: 850px) {
+
+    .card th,
+    .card td {
+        font-size: 1rem;
+        padding: 16px 10px;
+    }
+
+    .submit-btn {
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    .button-container {
+        justify-content: center;
+    }
+}
+
+/* レスポンシブ対応（PC大画面） */
+@media (min-width: 1400px) and (max-width: 1540px) {
+    .main {
+        padding: 0 40px;
+    }
+}
+
+/* レスポンシブ対応（タブレット範囲の補強） */
+@media (min-width: 768px) and (max-width: 850px) {
+    .main {
+        padding: 0 30px;
+    }
+
+    .time {
+        font-size: 40px;
+    }
+
+    .btn {
+        font-size: 16px;
+    }
+}
