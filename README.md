@@ -12,7 +12,7 @@
 ### Dockerビルド手順
 
 1. `git clone git@github.com:furukawa-seiya530/management-app.git`
-3. `docker-compose up -d --build`
+2. `docker-compose up -d --build`
 
 > ※ MySQLが立ち上がらない場合、OSに応じて `docker-compose.yml` を調整してください。
 
@@ -32,21 +32,21 @@
 
 ## 使用技術
 
-- **PHP** 8.0  
-- **Laravel** 10  
-- **MySQL** 8.0  
-- **Docker / Docker Compose**  
-- **Bladeテンプレート** / **CSS（Sanitize + カスタムCSS）**  
-- **Laravel Fortify（認証機能）**  
-- **PHPUnit（機能テスト実装済）**  
-- **dbdiagram.io** によるER図管理
+- PHP 8.0  
+- Laravel 10  
+- MySQL 8.0  
+- Docker / Docker Compose  
+- Bladeテンプレート / CSS（Sanitize + カスタムCSS）  
+- Laravel Fortify（認証機能）  
+- PHPUnit（機能テスト実装済）  
+- dbdiagram.io によるER図管理
 
 ---
 
 ## 主な機能
 
 - ログイン / 会員登録（Fortify）
-- 出勤 / 休憩 / 退勤の打刻機能
+- 出勤 / 休憩 / 退勤の打刻機能（当日1回制限）
 - 勤怠一覧（月別切替対応）
 - 勤怠詳細確認・修正申請機能
 - 勤怠修正申請一覧（承認待ち / 承認済み）
@@ -61,7 +61,6 @@
 
 ![Untitled](https://github.com/user-attachments/assets/26b14902-ecff-4c4e-850a-c98ea8fc8b66)
 
-
 ---
 
 ## URL（開発用）
@@ -71,29 +70,30 @@
 
 ---
 
-## その他(重要)
+## その他（重要）
 
-- `.env` ファイルは以下のように編集してください（DB接続エラー防止のため）:
+- `.env` ファイルは以下のように編集してください：
 
--DB_CONNECTION=mysql
--DB_HOST=mysql
--DB_PORT=3306
--DB_DATABASE=laravel_db
--DB_USERNAME=root
--DB_PASSWORD=root
+  ```env
+  DB_CONNECTION=mysql
+  DB_HOST=mysql
+  DB_PORT=3306
+  DB_DATABASE=laravel_db
+  DB_USERNAME=root
+  DB_PASSWORD=root
+出勤ボタンは「当日中は1回のみ有効」であり、翌日になると再び押せます。
 
-出勤ボタンは「当日中は1回のみ有効」であり、翌日になると再び押せる仕様です。
+修正申請は管理者承認後、自動的に勤怠データへ反映されます。
 
-修正申請は管理者承認後、自動的に勤怠データへ反映されます
+テスト実行
+実行コマンド：php artisan test
 
-## テスト実行
+主なテストファイル：
 
-- `php artisan test`
+tests/Feature/LoginTest.php
 
-Featureテスト・Unitテスト含む多数のテストケースを実装済み。
+tests/Feature/AttendanceCorrectionTest.php
 
-テストファイル例:
-`tests/Feature/LoginTest.php`
-`tests/Feature/AttendanceCorrectionTest.php`
-`tests/Feature/AdminAttendanceListTest.php`
-`tests/Unit/ExampleTest.php など`
+tests/Feature/AdminAttendanceListTest.php
+
+tests/Unit/ExampleTest.php
