@@ -12,7 +12,8 @@
 ### Dockerビルド手順
 
 1. `git clone git@github.com:furukawa-seiya530/management-app.git`
-2. `docker-compose up -d --build`
+2. cd management-app
+3. `docker-compose up -d --build`
 
 > ※ MySQLが立ち上がらない場合、OSに応じて `docker-compose.yml` を調整してください。
 
