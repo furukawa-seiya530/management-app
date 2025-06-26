@@ -1,122 +1,99 @@
-# 勤怠管理アプリ - Laravel製
+# 勤怠管理アプリ
 
-## 📌 概要
+## 概要
 
-本アプリは、LaravelとDockerを用いて開発した勤怠管理システムです。  
-一般ユーザー・管理者で機能を分け、勤怠打刻・修正申請・申請承認などの業務をWeb上で完結できるよう設計されています。
+出勤・休憩・退勤の打刻機能に加えて、勤怠修正申請・承認、勤怠一覧表示、スタッフごとの月次勤怠確認、CSV出力などを備えた、Laravel製の勤怠管理アプリです。  
+一般ユーザーと管理者の両方に対応した機能を提供しています。
 
 ---
 
-## 🛠️ 環境構築
+## 環境構築
 
-### ✅ クローン・Dockerビルド
+### Dockerビルド手順
 
-```bash
-git clone git@github.com:furukawa-seiya530/management-app.git
-cd management-app
-docker-compose up -d --build
-※ MySQL が起動しない場合は、docker-compose.yml をOSに応じて調整してください。
+1.  git clone git@github.com:furukawa-seiya530/management-app.git
+3. `docker-compose up -d --build`
 
-✅ Laravelセットアップ
-bash
-コピーする
-編集する
-docker-compose exec php bash
-composer install
-cp .env.example .env
-# .envファイルを編集（DB接続など）
-php artisan key:generate
-php artisan migrate
-php artisan db:seed   # 初期ユーザー・ダミーデータを投入
-⚙️ 使用技術
-PHP 8.0
+> ※ MySQLが立ち上がらない場合、OSに応じて `docker-compose.yml` を調整してください。
 
-Laravel 10
+---
 
-MySQL 8.0
+### Laravelセットアップ
 
-Docker / Docker Compose
+1. `docker-compose exec php bash`
+2. `composer install`
+3. `.env.example` をコピーして `.env` を作成
+4. `.env` の環境変数を適切に編集
+5. `php artisan key:generate`
+6. `php artisan migrate`
+7. `php artisan db:seed` （初期データ投入が必要な場合）
 
-Laravel Fortify（認証）
+---
 
-Bladeテンプレート / CSS（sanitize.css + カスタムCSS）
+## 使用技術
 
-PHPUnit（Feature / Unitテスト実装済）
+- **PHP** 8.0  
+- **Laravel** 10  
+- **MySQL** 8.0  
+- **Docker / Docker Compose**  
+- **Bladeテンプレート** / **CSS（Sanitize + カスタムCSS）**  
+- **Laravel Fortify（認証機能）**  
+- **PHPUnit（機能テスト実装済）**  
+- **dbdiagram.io** によるER図管理
 
-✨ 主な機能
-🔓 認証機能（Fortify）
-ユーザー登録 / ログイン / ログアウト（管理者・一般ユーザー共通）
+---
 
-👤 一般ユーザー機能
-勤怠打刻（出勤 / 休憩 / 退勤）
+## 主な機能
 
-勤怠一覧（月別切替、詳細リンクあり）
+- ログイン / 会員登録（Fortify）
+- 出勤 / 休憩 / 退勤の打刻機能
+- 勤怠一覧（月別切替対応）
+- 勤怠詳細確認・修正申請機能
+- 勤怠修正申請一覧（承認待ち / 承認済み）
+- 管理者による申請承認 / 勤怠直接修正
+- スタッフ別勤怠閲覧（月単位・CSV出力機能あり）
+- 管理者 / 一般ユーザーのアクセス制御
+- レスポンシブ対応
 
-勤怠詳細編集（修正申請機能あり）
+---
 
-修正申請一覧（承認待ち / 承認済み）
+## 作成したER図
 
-ステータス管理（出勤中、休憩中、退勤済など）
+![Untitled](https://github.com/user-attachments/assets/26b14902-ecff-4c4e-850a-c98ea8fc8b66)
 
-🛠 管理者機能
-ログイン（管理者のみアクセス可能）
 
-スタッフ一覧（氏名・メールアドレス表示）
+---
 
-スタッフ別勤怠一覧（月次切替）
+## URL（開発用）
 
-勤怠詳細の直接修正（承認不要）
+- フロントエンド: [http://localhost](http://localhost)  
+- phpMyAdmin: [http://localhost:8080](http://localhost:8080)
 
-修正申請一覧（承認 / 却下対応）
+---
 
-申請詳細画面（内容確認・承認機能）
+## その他(重要)
 
-🔗 アクセス
-フロントエンド: http://localhost
+- `.env` ファイルは以下のように編集してください（DB接続エラー防止のため）:
 
-phpMyAdmin: http://localhost:8080
-
-🧪 テスト実行
-bash
-コピーする
-編集する
-php artisan test
-Featureテスト・Unitテスト含む多数のテストケースを実装済み。
-
-テストファイル例:
-
-tests/Feature/LoginTest.php
-
-tests/Feature/AttendanceCorrectionTest.php
-
-tests/Feature/AdminAttendanceListTest.php
-
-tests/Unit/ExampleTest.php など
-
-📌 ER図（設計）
-ER図は dbdiagram.io にて設計。
-主要テーブル：
-
-users
-
-attendances
-
-attendance_correction_requests
-
-※希望があれば画像・リンクをここに掲載。
-
-⚠️ 注意事項
-.env 設定例（DB）:
-
-ini
-コピーする
-編集する
 DB_CONNECTION=mysql
 DB_HOST=mysql
 DB_PORT=3306
 DB_DATABASE=laravel_db
 DB_USERNAME=root
 DB_PASSWORD=root
-php artisan migrate:fresh で初期化後、 php artisan db:seed を実行してください。
 
-Dockerが起動していない状態で php artisan コマンドを実行しようとするとエラーになるため注意。
+## テスト実行
+
+-php artisan test
+Featureテスト・Unitテスト含む多数のテストケースを実装済み。
+
+テストファイル例:
+tests/Feature/LoginTest.php
+tests/Feature/AttendanceCorrectionTest.php
+tests/Feature/AdminAttendanceListTest.php
+tests/Unit/ExampleTest.php など
+
+##補足
+出勤ボタンは「当日中は1回のみ有効」であり、翌日になると再び押せる仕様です。
+
+修正申請は管理者承認後、自動的に勤怠データへ反映されます。
