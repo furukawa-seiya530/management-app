@@ -11,7 +11,7 @@
 
 ### Dockerビルド手順
 
-1.  git clone git@github.com:furukawa-seiya530/management-app.git
+1. `git clone git@github.com:furukawa-seiya530/management-app.git`
 3. `docker-compose up -d --build`
 
 > ※ MySQLが立ち上がらない場合、OSに応じて `docker-compose.yml` を調整してください。
@@ -84,7 +84,7 @@ DB_PASSWORD=root
 
 ## テスト実行
 
--php artisan test
+-`php artisan test`
 Featureテスト・Unitテスト含む多数のテストケースを実装済み。
 
 テストファイル例:
