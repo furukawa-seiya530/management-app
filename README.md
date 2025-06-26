@@ -75,12 +75,12 @@
 
 - `.env` ファイルは以下のように編集してください（DB接続エラー防止のため）:
 
-DB_CONNECTION=mysql
-DB_HOST=mysql
-DB_PORT=3306
-DB_DATABASE=laravel_db
-DB_USERNAME=root
-DB_PASSWORD=root
+-DB_CONNECTION=mysql
+-DB_HOST=mysql
+-DB_PORT=3306
+-DB_DATABASE=laravel_db
+-DB_USERNAME=root
+-DB_PASSWORD=root
 
 ## テスト実行
 
@@ -88,10 +88,10 @@ DB_PASSWORD=root
 Featureテスト・Unitテスト含む多数のテストケースを実装済み。
 
 テストファイル例:
-tests/Feature/LoginTest.php
-tests/Feature/AttendanceCorrectionTest.php
-tests/Feature/AdminAttendanceListTest.php
-tests/Unit/ExampleTest.php など
+`tests/Feature/LoginTest.php`
+`tests/Feature/AttendanceCorrectionTest.php`
+`tests/Feature/AdminAttendanceListTest.php`
+`tests/Unit/ExampleTest.php など`
 
 ##補足
 出勤ボタンは「当日中は1回のみ有効」であり、翌日になると再び押せる仕様です。
