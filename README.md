@@ -84,7 +84,8 @@
 
 ## テスト実行
 
--`php artisan test`
+- `php artisan test`
+
 Featureテスト・Unitテスト含む多数のテストケースを実装済み。
 
 テストファイル例:
