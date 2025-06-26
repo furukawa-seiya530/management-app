@@ -86,15 +86,29 @@
 
 修正申請は管理者承認後、自動的に勤怠データへ反映されます。
 
-テスト実行
-実行コマンド：php artisan test
+## テストアカウント
+name: 管理者 太郎  
+email: admin@example.com 
+password: password  
+-------------------------
+name: 一般 花子
+email: user@example.com 
+password: password  
+-------------------------
 
-主なテストファイル：
+## テスト実行
+本アプリケーションには、多数のLaravelの機能テストおよびユニットテストが実装されています。以下の手順に従って、テスト用データベース test_database を作成し、テストを実行してください。
 
-tests/Feature/LoginTest.php
+以下のコマンド:  
+```
+//テスト用データベースの作成
+docker-compose exec mysql bash
+mysql -u root -p
+//パスワードはrootと入力
+create database test_database;
 
-tests/Feature/AttendanceCorrectionTest.php
+docker-compose exec php bash
+php artisan migrate:fresh --env=testing
 
-tests/Feature/AdminAttendanceListTest.php
-
-tests/Unit/ExampleTest.php
+//テスト実行
+php artisan test
