@@ -82,6 +82,10 @@
 -DB_USERNAME=root
 -DB_PASSWORD=root
 
+出勤ボタンは「当日中は1回のみ有効」であり、翌日になると再び押せる仕様です。
+
+修正申請は管理者承認後、自動的に勤怠データへ反映されます
+
 ## テスト実行
 
 - `php artisan test`
@@ -93,8 +97,3 @@ Featureテスト・Unitテスト含む多数のテストケースを実装済み
 `tests/Feature/AttendanceCorrectionTest.php`
 `tests/Feature/AdminAttendanceListTest.php`
 `tests/Unit/ExampleTest.php など`
-
-##補足
-出勤ボタンは「当日中は1回のみ有効」であり、翌日になると再び押せる仕様です。
-
-修正申請は管理者承認後、自動的に勤怠データへ反映されます。
