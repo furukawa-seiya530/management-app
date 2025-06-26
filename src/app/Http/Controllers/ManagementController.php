@@ -15,10 +15,6 @@ use Illuminate\Support\Facades\Response;
 
 class ManagementController extends Controller
 {
-    // -------------------------
-    // ▼ 一般ユーザー用機能
-    // -------------------------
-
     public function showRegister(): \Illuminate\View\View
     {
         return view('auth.register');
@@ -29,7 +25,6 @@ class ManagementController extends Controller
         return view('auth.login');
     }
 
-    // ログイン処理（一般ユーザー専用）
     public function handleLogin(LoginRequest $request): \Illuminate\Http\RedirectResponse
     {
         $credentials = $request->only('email', 'password');
@@ -42,52 +37,47 @@ class ManagementController extends Controller
     }
 
     public function showAttendanceForm(): \Illuminate\View\View
-{
-    $user = auth()->user();
-    $today = \Carbon\Carbon::today();
+    {
+        $user = auth()->user();
+        $today = Carbon::today();
 
-    $lastAttendance = \App\Models\Attendance::where('user_id', $user->id)
-        ->where('work_date', $today)
-        ->first();
+        $lastAttendance = Attendance::where('user_id', $user->id)
+            ->where('work_date', $today)
+            ->first();
 
-    // 勤務外を強制するのは status が NULL のときだけに限定
-    if (!$lastAttendance && is_null($user->status)) {
-        $user->status = '勤務外';
-        $user->save();
+        if (!$lastAttendance && is_null($user->status)) {
+            $user->status = '勤務外';
+            $user->save();
+        }
+
+        return view('attendance.form', ['status' => $user->fresh()->status]);
     }
 
-    return view('attendance.form', ['status' => $user->fresh()->status]);
-}
+    public function startAttendance(Request $request): \Illuminate\Http\RedirectResponse
+    {
+        $user = Auth::user();
+        $today = Carbon::today();
 
+        $existing = Attendance::where('user_id', $user->id)
+            ->where('work_date', $today)
+            ->exists();
 
-public function startAttendance(Request $request): \Illuminate\Http\RedirectResponse
-{
-    $user = Auth::user();
-    $today = Carbon::today();
+        if ($existing) {
+            return redirect()->route('attendance.form')
+                ->withErrors(['attendance' => '本日の出勤は既に記録されています。']);
+        }
 
-    // 今日すでに出勤していたらリダイレクト＋エラー返す
-    $existing = Attendance::where('user_id', $user->id)
-        ->where('work_date', $today)
-        ->exists();
+        $user->update(['status' => '出勤中']);
 
-    if ($existing) {
-        return redirect()->route('attendance.form')
-            ->withErrors(['attendance' => '本日の出勤は既に記録されています。']);
+        Attendance::create([
+            'user_id' => $user->id,
+            'work_date' => $today,
+            'start_time' => Carbon::now(),
+            'status' => '出勤中',
+        ]);
+
+        return redirect()->route('attendance.form')->with('message', '出勤を開始しました');
     }
-
-    // 出勤登録処理
-    $user->update(['status' => '出勤中']);
-
-    Attendance::create([
-        'user_id' => $user->id,
-        'work_date' => $today,
-        'start_time' => Carbon::now(),
-        'status' => '出勤中',
-    ]);
-
-    return redirect()->route('attendance.form')->with('message', '出勤を開始しました');
-}
-
 
     public function takeBreak(Request $request): \Illuminate\Http\RedirectResponse
     {
@@ -204,10 +194,6 @@ public function startAttendance(Request $request): \Illuminate\Http\RedirectResp
 
         return view('correction.index', compact('requests', 'status'));
     }
-
-    // -------------------------
-    // ▼ 管理者用機能
-    // -------------------------
 
     public function showAdminLogin(): \Illuminate\View\View
     {
