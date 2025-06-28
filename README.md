@@ -82,6 +82,7 @@
   DB_DATABASE=laravel_db
   DB_USERNAME=root
   DB_PASSWORD=root
+  
 出勤ボタンは「当日中は1回のみ有効」
 
 修正申請は管理者承認後、自動的に勤怠データへ反映されます。
