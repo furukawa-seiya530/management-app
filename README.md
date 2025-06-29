@@ -2,7 +2,7 @@
 
 ## 概要
 
-出勤・休憩・退勤の打刻機能に加えて、勤怠修正申請・承認、勤怠一覧表示、スタッフごとの月次勤怠確認、CSV出力などを備えた、Laravel製の勤怠管理アプリです。  
+出勤・休憩・退勤の打刻機能に加えて、勤怠修正申請・承認、勤怠一覧表示、スタッフごとの月次勤怠確認、CSV出力などを備えた、Laravel製の勤怠管理アプリです。
 一般ユーザーと管理者の両方に対応した機能を提供しています。
 
 ---
@@ -33,13 +33,13 @@
 
 ## 使用技術
 
-- PHP 8.0  
-- Laravel 10  
-- MySQL 8.0  
-- Docker / Docker Compose  
-- Bladeテンプレート / CSS（Sanitize + カスタムCSS）  
-- Laravel Fortify（認証機能）  
-- PHPUnit（機能テスト実装済）  
+- PHP 8.0
+- Laravel 10
+- MySQL 8.0
+- Docker / Docker Compose
+- Bladeテンプレート / CSS（Sanitize + カスタムCSS）
+- Laravel Fortify（認証機能）
+- PHPUnit（機能テスト実装済）
 - dbdiagram.io によるER図管理
 
 ---
@@ -66,7 +66,7 @@
 
 ## URL（開発用）
 
-- フロントエンド: [http://localhost](http://localhost)  
+- フロントエンド: [http://localhost](http://localhost)
 - phpMyAdmin: [http://localhost:8080](http://localhost:8080)
 
 ---
